@@ -7,10 +7,10 @@
 
     // index.js
     export default {
-  async fetch(request, env, ctx) {
-    return handleRequest(request, env);
-  }
-}
+        async fetch(request, env, ctx) {
+            return handleRequest(request, env);
+        }
+    }
 
 
     var ARTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4OTE2MSwiZXhwIjoxNzU1MzYxMzQwfQ.WxECSI-XMa3vsQ9J4rtzsXV-LS1J035PnCyBH5be7jk";
