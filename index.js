@@ -6,9 +6,12 @@
     });
 
     // index.js
-    addEventListener("fetch", (event) => {
-        event.respondWith(handleRequest(event.request, event.env));
-    });
+    export default {
+  async fetch(request, env, ctx) {
+    return handleRequest(request, env);
+  }
+}
+
 
     var ARTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4OTE2MSwiZXhwIjoxNzU1MzYxMzQwfQ.WxECSI-XMa3vsQ9J4rtzsXV-LS1J035PnCyBH5be7jk";
     var BOT_TOKENS = /* @__PURE__ */ new Set();
