@@ -12,7 +12,7 @@
 
 
 
-    var ARTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4OTE2MSwiZXhwIjoxNzU1MzYxMzQwfQ.WxECSI-XMa3vsQ9J4rtzsXV-LS1J035PnCyBH5be7jk";
+    var ARTING_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4OTE2MSwiZXhwIjoxNzU2MDI2OTgxfQ.rkTVuPCz5b7icxAKKCrd3j3ZCSqm5F9adRgtUQRFWy4";
     var BOT_TOKENS = /* @__PURE__ */ new Set();
     var SESSIONS = /* @__PURE__ */ new Map();
     var MODEL_IDS = [
