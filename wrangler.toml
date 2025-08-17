@@ -1,6 +1,7 @@
-name = "call_back"
+name = "callback"
 main = "index.js"
-compatibility_date = "2025-08-13"
+compatibility_date = "2025-08-17"
+
 
 # KV Binding
 [[kv_namespaces]]
