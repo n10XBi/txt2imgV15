@@ -223,8 +223,10 @@
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
             throw new Error("Missing or invalid API key");
         }
+
         const apiKey = authHeader.substring(7).trim();
-        const value = await env["gen-t2img"].get(apiKey);
+        const value = await env["Gen-api-txt2img"].get(apiKey); // FIX binding name
+
         if (!value) throw new Error("API key not found");
 
         let data;
@@ -244,7 +246,7 @@
 
         // increment usage
         data.usage += 1;
-        await env["gen-t2img"].put(apiKey, JSON.stringify(data));
+        await env["Gen-api-txt2img"].put(apiKey, JSON.stringify(data)); // FIX binding name
 
         return {
             owner: data.owner
