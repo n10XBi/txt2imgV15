@@ -218,42 +218,6 @@
     }
     __name(wait, "wait");
 
-    async function checkApiKey(request, env) {
-        const authHeader = request.headers.get("Authorization");
-        if (!authHeader || !authHeader.startsWith("Bearer ")) {
-            throw new Error("Missing or invalid API key");
-        }
-
-        const apiKey = authHeader.substring(7).trim();
-        const value = await env["Gen-api-txt2img"].get(apiKey); // FIX binding name
-
-        if (!value) throw new Error("API key not found");
-
-        let data;
-        try {
-            data = JSON.parse(value);
-        } catch {
-            throw new Error("Invalid API key data");
-        }
-
-        if (typeof data.limit !== "number" || typeof data.usage !== "number") {
-            throw new Error("Malformed API key data");
-        }
-
-        if (data.usage >= data.limit) {
-            throw new Error("API key usage limit exceeded");
-        }
-
-        // increment usage
-        data.usage += 1;
-        await env["Gen-api-txt2img"].put(apiKey, JSON.stringify(data)); // FIX binding name
-
-        return {
-            owner: data.owner
-        };
-    }
-
-
     async function pollImageResultArting(request_id, timeout = 18e4, interval = 4e3) {
         const start = Date.now();
         while (Date.now() - start < timeout) {
@@ -713,22 +677,6 @@
                         ...corsHeaders()
                     }
                 });
-            }
-
-            if ((pathname === "/generate" || pathname === "/get_result") && !pathname.startsWith("/telegram/")) {
-                try {
-                    await checkApiKey(request, env);
-                } catch (err) {
-                    return new Response(JSON.stringify({
-                        error: err.message
-                    }), {
-                        status: 401,
-                        headers: {
-                            "Content-Type": "application/json",
-                            ...corsHeaders()
-                        }
-                    });
-                }
             }
 
             if (pathname === "/health") {
